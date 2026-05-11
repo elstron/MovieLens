@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Core\Controller;
@@ -23,10 +24,10 @@ class HomeController extends Controller
         $releasedMovies = $this->movieService->getReleasedMovies(5, 0);
         $lastMoviesAdded = $this->movieService->getLastMoviesAdded(5, 0);
         $lastTvShowsAdded = $this->tvShowService->getLastTvShowsAdded(5, 0);
-
-        $this->twig('index', 
+        $this->twig(
+            'index',
             [
-                'title' => "Explora las Películas", 
+                'title' => "Explora las Películas",
                 'lastMovie' => $lastMovieData,
                 'releasedMovies' => $releasedMovies,
                 'lastMoviesAdded' => $lastMoviesAdded,

@@ -8,3 +8,4 @@
 /.nuxt
 /.nuxt-devtools
 /src/cache/twig
+.php-cs-fixer.cache
