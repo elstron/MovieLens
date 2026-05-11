@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core;
 
 require_once __DIR__ . '/../utils/minify.php';
@@ -7,7 +8,14 @@ class View
 {
     public function render(string $template, array $data = []): void
     {
-        $path = __DIR__ . '/../Views/' . $template . '.php';
+        $basePath = null;
+        foreach ([__DIR__ . '/../views', __DIR__ . '/../Views'] as $candidate) {
+            if (is_dir($candidate)) {
+                $basePath = $candidate;
+                break;
+            }
+        }
+        $path = ($basePath ?: __DIR__ . '/../views') . '/' . $template . '.php';
         if (!empty($data)) {
             extract($data);
         }
@@ -19,10 +27,6 @@ class View
             require $path;
             $output = ob_get_clean();
             echo minify_html($output);
-            $duration = microtime(true) - APP_START;
-            echo "Tiempo de carga: " . round($duration * 1000, 2) . " ms";
-
         }
     }
-
 }

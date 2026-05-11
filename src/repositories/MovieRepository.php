@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Core\Database;
-use App\Models\Movie;  
+use App\Models\Movie;
 
 class MovieRepository
 {
