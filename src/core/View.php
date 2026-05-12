@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-require_once __DIR__ . '/../utils/minify.php';
+use App\Utils\Minify;
 
 class View
 {
@@ -26,7 +26,7 @@ class View
             ob_start();
             require $path;
             $output = ob_get_clean();
-            echo minify_html($output);
+            echo Minify::html($output);
         }
     }
 }

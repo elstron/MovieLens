@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Movie;
@@ -22,11 +23,13 @@ class MovieService
 
     public function getMovieBySlug(string $slug): ?Movie
     {
-        if (empty($slug)) return null;
+        if (empty($slug)) {
+            return null;
+        }
 
         $movie = $this->movieRepository->findBySlug($slug);
         if (!$movie) {
-            throw new MovieNotFoundException( 
+            throw new MovieNotFoundException(
                 "La película con el slug '{$slug}' no fue encontrada."
             );
         }
@@ -57,9 +60,9 @@ class MovieService
             throw new ValidationException("campos requeridos faltantes.");
         }
 
-        // <- Crear la entidad Movie 
+        // <- Crear la entidad Movie
         $movie = new Movie(
-            null, 
+            null,
             $data['title'],
             $data['slug'],
             $data['description'],
@@ -73,3 +76,4 @@ class MovieService
         return $movie;
     }
 }
+

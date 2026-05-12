@@ -1,15 +1,16 @@
 <?php
+
 namespace App\Core;
 
 abstract class Controller
 {
     protected function view(string $template, array $data = []): void
     {
-        (new View)->render($template, $data);
+        (new View())->render($template, $data);
     }
     protected function twig(string $template, array $data = []): void
     {
-        (new TwigView)->render($template, $data);
+        (new TwigView())->render($template, $data);
     }
 
     protected function redirect(string $url): void

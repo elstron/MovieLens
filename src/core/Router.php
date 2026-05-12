@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core;
 
 use App\Core\Container;
@@ -50,7 +51,7 @@ class Router
                 [$controllerClass, $controllerMethod] = explode('@', $route['action']);
 
                 $controller = $this->container->get($controllerClass);
-       
+
                 $args = array_merge($matches, [$queryParams]);
 
                 call_user_func_array([$controller, $controllerMethod], $args);

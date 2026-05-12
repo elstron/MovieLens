@@ -1,6 +1,7 @@
 <?php
 
-namespace  App\Repositories;
+namespace App\Repositories;
+
 use App\Core\Database;
 use App\Models\TvShow;
 
@@ -100,5 +101,5 @@ class TvShowRepository
         }
         return $tvShows;
     }
-
 }
+

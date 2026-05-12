@@ -16,11 +16,11 @@ use App\Services\{MovieService, TvShowService};
 use App\Repositories\{MovieRepository, TvShowRepository};
 
 $container = new Container();
-$container->bind(Database::class, fn() => new Database());
-$container->bind(MovieRepository::class, fn($c) => new MovieRepository($c->get(Database::class)));
-$container->bind(MovieService::class, fn($c) => new MovieService($c->get(MovieRepository::class)));
-$container->bind(TvShowRepository::class, fn($c) => new TvShowRepository($c->get(Database::class)));
-$container->bind(TvShowService::class, fn($c) => new TvShowService($c->get(TvShowRepository::class)));
+$container->bind(Database::class, fn () => new Database());
+$container->bind(MovieRepository::class, fn ($c) => new MovieRepository($c->get(Database::class)));
+$container->bind(MovieService::class, fn ($c) => new MovieService($c->get(MovieRepository::class)));
+$container->bind(TvShowRepository::class, fn ($c) => new TvShowRepository($c->get(Database::class)));
+$container->bind(TvShowService::class, fn ($c) => new TvShowService($c->get(TvShowRepository::class)));
 
 $router = new Router($container);
 

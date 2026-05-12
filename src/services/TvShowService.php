@@ -1,6 +1,7 @@
-<?php 
+<?php
 
 namespace App\Services;
+
 use App\Models\TvShow;
 use App\Repositories\TvShowRepository;
 
@@ -30,8 +31,8 @@ class TvShowService
 
     public function getLastTvShow(): ?TvShow
     {
-       $limit = 1;
-       $offset = 0; 
+        $limit = 1;
+        $offset = 0;
         return $this->tvShowRepository->findByCriteria(
             [],
             $limit,

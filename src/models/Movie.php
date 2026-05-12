@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Models;
 
 class Movie
 {
     public ?int $id;
-    public string $title; 
+    public string $title;
     public string $originalTitle;
     public string $slug;
     public string $rating;
@@ -126,3 +127,4 @@ class Movie
         return !empty($this->network);
     }
 }
+

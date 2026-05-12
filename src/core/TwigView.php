@@ -4,8 +4,7 @@ namespace App\Core;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-
-require_once __DIR__ . '/../utils/minify.php';
+use App\Utils\Minify;
 
 class TwigView
 {
@@ -30,6 +29,6 @@ class TwigView
     {
         ob_start();
         $output = $this->twig->render($template . '.twig', $data);
-        echo minify_html($output);
+        echo Minify::html($output);
     }
 }

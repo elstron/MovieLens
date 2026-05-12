@@ -5,13 +5,14 @@ WORKDIR /app
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
-FROM php:8.2-apache
+FROM php:8.3-apache
 
 RUN docker-php-ext-install pdo_mysql \
     && a2enmod rewrite
 
 WORKDIR /var/www/html
 
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 COPY . .
 COPY --from=vendor /app/vendor /var/www/html/vendor
 
